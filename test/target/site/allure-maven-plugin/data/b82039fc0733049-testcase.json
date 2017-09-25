@@ -1,0 +1,44 @@
+{
+  "uid" : "b82039fc0733049",
+  "name" : "should add a todo",
+  "title" : "should add a todo",
+  "time" : {
+    "start" : 1506330142894,
+    "stop" : 1506330153001,
+    "duration" : 10107
+  },
+  "summary" : {
+    "attachments" : 1,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "testId" : null,
+  "suite" : {
+    "uid" : "bbb4bc85004fa1ef",
+    "name" : "angularjs homepage todo list",
+    "title" : "angularjs homepage todo list"
+  },
+  "steps" : [ ],
+  "attachments" : [ {
+    "title" : "Screenshot",
+    "source" : "a23476be-6ba0-4da2-9804-e6707c3724be-attachment.png",
+    "type" : "image/png",
+    "size" : 518929,
+    "uid" : "d0bf5624df8fbd64"
+  } ],
+  "issues" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "angularjs homepage todo list"
+  }, {
+    "name" : "suite-title",
+    "value" : "angularjs homepage todo list"
+  } ],
+  "parameters" : [ ]
+}

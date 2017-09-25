@@ -1,0 +1,20 @@
+{
+  "hosts" : [ {
+    "title" : "default",
+    "threads" : [ {
+      "title" : "default",
+      "testCases" : [ {
+        "uid" : "b82039fc0733049",
+        "name" : "should add a todo",
+        "title" : "should add a todo",
+        "time" : {
+          "start" : 1506330142894,
+          "stop" : 1506330153001,
+          "duration" : 10107
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      } ]
+    } ]
+  } ]
+}
