@@ -1,31 +1,37 @@
-
-
-
 exports.config = {
     framework: 'jasmine2',
-    onPrepare: function () {
-        var AllureReporter = require('jasmine-allure-reporter');
-        jasmine.getEnv().addReporter(new AllureReporter());
-        jasmine.getEnv().afterEach(function(done){
-            browser.takeScreenshot().then(function (png) {
-                allure.createAttachment('Screenshot', function () {
-                    return new Buffer(png, 'base64')
-                }, 'image/png')();
-                done();
-            })
-        });
-    },
+    // path relative to the current config file
+    frameworkPath: require.resolve('protractor-cucumber-framework'),
 
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['test1.js'],
-
+    specs: ['features/*.feature'],
+    cucumberOpts: {
+        require: 'features/step-definitions/*.js',
+        keepAlive: false,
+        format: ['json:reports/results.json', 'progress'],
+        strict: true,
+        tags: '@Regression'
+    },
     capabilities: {
         browserName: 'chrome',
-
         chromeOptions: {
-            args: [ "--headless", "--disable-gpu" ]
+            args: ["--headless", "--disable-gpu"]
         }
-    }
+    },
+
+    onComplete: function () {
+        browser.close();
+    },
+
+    plugins: [{
+        package: 'protractor-multiple-cucumber-html-reporter-plugin',
+        options: {
+            // read the options part https://www.npmjs.com/package/protractor-multiple-cucumber-html-reporter-plugin#options
+            automaticallyGenerateReport: true,
+            removeExistingJsonReportFile: true,
+            openReportInBrowser: true
+        }
+    }]
 
 
 };
