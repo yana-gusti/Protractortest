@@ -6,7 +6,7 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: ['features/*.feature'],
     cucumberOpts: {
-        require: 'features/step-definitions/*.js',
+        require: 'features/step_definitions/*.js',
         keepAlive: false,
         format: ['json:reports/results.json', 'progress'],
         strict: true,

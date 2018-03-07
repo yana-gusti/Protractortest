@@ -1,17 +1,16 @@
 
-Feature: test-feature: Verification of calculator work
+Feature: test-feature
 
   Background:
     Given User prints comment "User navigates to the Calculator page"
     When User navigates to the Calculator page
     Then Page title is equal to "Super Calculator"
 
-  Scenario: 1: Verify Data Connector users
-    Given User verifies his profile on "DATA_CONNECTOR"
+  Scenario: 1: Verify calculator
     When User enters 1 in field "first"
     When User enters 2 in field "second"
     When User clicks Go Button "gobutton"
-    Then History "result in memory" is equal to 1
+    Then History "result memory" is equal to 1
     When User enters 3 in field "first"
     When User enters 4 in field "second"
     When User clicks Go Button "gobutton"
