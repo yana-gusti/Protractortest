@@ -10,7 +10,7 @@ Feature: test-feature
     When User enters 1 in field "first"
     When User enters 2 in field "second"
     When User clicks Go Button "gobutton"
-    Then History "result memory" is equal to 1
+    Then History "result memory" is equal to 0
     When User enters 3 in field "first"
     When User enters 4 in field "second"
     When User clicks Go Button "gobutton"
@@ -19,4 +19,4 @@ Feature: test-feature
     When User enters 6 in field "second"
     When User clicks Go Button "gobutton"
     # Here is an error
-    Then History "result in memory" is equal to 2
+    Then History "result in memory" is equal to 3
