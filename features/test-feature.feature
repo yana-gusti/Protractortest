@@ -1,4 +1,4 @@
-
+@Regression
 Feature: test-feature
 
   Background:
