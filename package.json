@@ -11,22 +11,21 @@
   "license": "MIT",
   "repository": "https://github.com/yana-gusti/Protractortest",
   "devDependencies": {
-    "os-homedir": "^1.0.2 ",
-    "fs-plus": "^3.0.1",
-    "xlsx": "^0.11.18",
-    "protractor": "^5.2.1",
-    "protractor-jasmine2-screenshot-reporter": "^0.5.0",
-    "chai": "~3.5.0",
-    "chai-as-promised": "~6.0.0",
-    "cucumber": "^3.2.1",
-    "protractor-cucumber-framework": "^4.1.1",
-    "protractor-multiple-cucumber-html-reporter-plugin": "^1.3.0"
+    "xmlhttprequest": "1.8.0",
+    "os-homedir": "1.0.2 ",
+    "fs-plus": "3.0.2",
+    "xlsx": "0.12.6",
+    "protractor": "5.3.0",
+    "protractor-jasmine2-screenshot-reporter": "0.5.0",
+    "chai": "4.1.2",
+    "chai-as-promised": "7.1.1",
+    "cucumber": "4.1.0",
+    "protractor-cucumber-framework": "4.2.0",
+    "protractor-multiple-cucumber-html-reporter-plugin": "1.6.1"
   },
   "scripts": {
     "webdriver-update": "webdriver-manager update",
     "webdriver": "webdriver-manager start",
-    "pretest": "rm -rf allure-report",
-    "test": "protractor conf.js",
-    "posttest": "allure generate allure-results --clean -o allure-report || true"
+    "test": "protractor conf.js"
   }
 }
