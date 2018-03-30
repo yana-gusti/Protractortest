@@ -11,18 +11,18 @@ Feature: test-feature
     When User selects "+" from dropdown "select"
     When User enters 2 in field "second"
     When User clicks Go Button "gobutton"
-    Then Result "h2" is equal to "3"
+#    Then Result "h2" is equal to "3"
     Then History "result memory" is equal to 0
     When User enters 3 in field "first"
     When User enters 4 in field "second"
     When User clicks Go Button "gobutton"
-    Then History "result in memory" is equal to 2
+#    Then History "result in memory" is equal to 2
     When User enters 5 in field "first"
     When User enters 6 in field "second"
     When User clicks Go Button "gobutton"
-    Then Table cell "tbody tr td" with text "3" is displayed
+#    Then Table cell "tbody tr td" with text "3" is displayed
     # Here is an error
-    Then History "result in memory" is equal to 3
+#    Then History "result in memory" is equal to 3
     Then Table "[class='table']" match data:
       | Time | Expression | Result |
       | 12   | 2          | t      |

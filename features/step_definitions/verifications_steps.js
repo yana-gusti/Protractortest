@@ -33,7 +33,7 @@ Then(/^Table "([^"]*)" match data:$/, (locator, table) => {
     const values = [];
     const expectedTable = table.hashes();
     const actualTable = element(by.css(locator));
-    actualTable.all(by.css("thead tr th")).each(function (header, i) {
+    const actual = actualTable.all(by.css("thead tr th")).each(function (header, i) {
         header.getText().then(function (text) {
             headers[i]=text;
         });
@@ -48,11 +48,13 @@ Then(/^Table "([^"]*)" match data:$/, (locator, table) => {
             values.push(rowAsJson);
 
         });
+    }).then(function () {
+        return values;
     });
+
     console.log(expectedTable);
     console.log("____________________________");
     console.log(values);
+    return expect(actual).to.deep.eventually.equal(expectedTable);
 
-
-    return expect(expectedTable).to.eventually.equal(values);
 });
