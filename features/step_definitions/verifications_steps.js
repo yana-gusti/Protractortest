@@ -49,12 +49,14 @@ Then(/^Table "([^"]*)" match data:$/, (locator, table) => {
 
         });
     }).then(function () {
+        console.log("____________________________!!!!!!!");
+        console.log(values);
         return values;
     });
 
     console.log(expectedTable);
     console.log("____________________________");
-    console.log(values);
+    console.log(actual);
     return expect(actual).to.deep.eventually.equal(expectedTable);
 
 });
