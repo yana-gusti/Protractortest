@@ -5,8 +5,8 @@ Given(/^User prints comment "([^"]*)"$/, (comment) => {
     return console.log(comment);
 });
 
-When(/^User navigates to the Calculator page$/, () => {
-    return browser.get(pageObjects.calculatorPage.url);
+When('User navigates to the Calculator page with url {css}', function (string) {
+    return browser.get(string);
 });
 
 When(/^User enters (\d+) in field "([^"]*)"$/, (number, model) => {
@@ -29,4 +29,21 @@ When(/^User selects "([^"]*)" from dropdown "([^"]*)"$/, (operator, parentLocato
     }).first();
 
     return option.click();
+});
+
+When(/^User clicks Go Button$/, () => {
+    const elem = element(by.id(pageObjects.mainPage.goButton));
+    return elem.click();
+});
+
+When(/^User enters (\d+) in "([^"]*)" field$/, (number, field) => {
+    switch (field) {
+        case ("first"):
+            return element(by.model(pageObjects.mainPage.firstfield)).sendKeys(number);
+        case ("second"):
+            return element(by.model(pageObjects.mainPage.secondfield)).sendKeys(number);
+        default:
+            return true;
+    }
+
 });

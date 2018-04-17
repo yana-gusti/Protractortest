@@ -3,13 +3,13 @@ Feature: test-feature
 
   Background:
     Given User prints comment "User navigates to the Calculator page"
-    When User navigates to the Calculator page
+    When User navigates to the Calculator page with url "calculatorPage|url"
     Then Page title is equal to "Super Calculator"
 
   Scenario: 1: Verify calculator
-    When User enters 1 in field "first"
+    When User enters 1 in "first" field
     When User selects "+" from dropdown "select"
-    When User enters 2 in field "second"
+    When User enters 2 in "second" field
     When User clicks Go Button "gobutton"
 #    Then Result "h2" is equal to "3"
     Then History "result memory" is equal to 0
