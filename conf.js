@@ -1,64 +1,58 @@
 exports.config = {
+    seleniumAddress: 'http://127.0.0.1:5571/wd/hub',
+    getPageTimeout: 60000, //60 sec
+    allScriptsTimeout: 60000,//60 seconds
+    ignoreUncaughtExceptions: true,
     framework: 'custom',
-    ignoreUncaughtExceptions: true, //This allows cucumber to handle the exception and record it appropriately.
-    // path relative to the current config file
     frameworkPath: require.resolve('protractor-cucumber-framework'),
 
-    seleniumAddress: 'http://localhost:4444/wd/hub',
-    // specs: ['features/*.feature'],
-    cucumberOpts: {
-        require: ['features/step_definitions/*.js', 'features/support/hooks.js', 'features/support/parameter-types.js'],
-        keepAlive: false,
-        format: ['json:reports/results.json', 'progress'],
-        strict: true,
-        tags: '@Regression'
-    },
     capabilities: {
         'browserName': 'chrome',
+        acceptSslCerts: true,
         chromeOptions: {
-            args: ['disable-infobars', 'start-fullscreen', 'no-sandbox',
-                'test-type=browser', 'disable-notifications', 'incognito',
-                'disable-application-cache'],
-            // Set download path and avoid prompting for download even though
-            // this is already the default on Chrome but for completeness
+            args: ['disable-gpu', 'window-size=1920,1080',
+                'test-type=browser', 'incognito',
+                'disable-application-cache',
+                //'headless'
+            ],
             prefs: {
                 'download': {
                     'prompt_for_download': false,
-                    'directory_upgrade': true
+                    'directory_upgrade': true,
+                    'profile.password_manager_enabled': false,
+                    'credentials_enable_service': false,
+                    'password_manager_enabled': false
                 }
             }
         },
-        // allows different specs to run in parallel.
-        // If this is set to be true, specs will be sharded by file
-        // (i.e. all files to be run by this set of capabilities will run in parallel).
-        // Default is false.
         shardTestFiles: true,
-
-        // Maximum number of browser instances that can run in parallel for this
-        // set of capabilities. This is only needed if shardTestFiles is true.
-        // Default is 1.
         maxInstances: 1,
     },
+    SELENIUM_PROMISE_MANAGER: false,
+    restartBrowserBetweenTests: true,
+    specs: ['features/Wiki.feature'],
 
-    // Spec patterns are relative to this directory.
-    specs: ['features/test-feature.feature'],
-    // suites: {
-    //     precondition: 'features/test.feature',
-    //     suite1: ['features/test-feature.feature', 'features/test.feature'],
-    //     suite2: ['features/test-feature.feature']
-    // },
+    cucumberOpts: {
+        require: ['step_definitions/*.js', 'support/helper.js', 'support/cucumber-expressions.js'],
+        keepAlive: false,
+        format: ['json:reports/results.json', 'progress'],
+        strict: true,
+        // tags: '@Regression'
+    },
 
-    onComplete: function () {
-        browser.close();
+    params: {
+        timeout: 15000, //15 sec
+        env: process.env.TEST_ENV || 'DEV',
+        lan: process.env.TEST_LAN || 'ENG'
     },
 
     plugins: [{
         package: 'protractor-multiple-cucumber-html-reporter-plugin',
         options: {
             // read the options part https://www.npmjs.com/package/protractor-multiple-cucumber-html-reporter-plugin#options
-            automaticallyGenerateReport: true,
-            removeExistingJsonReportFile: true,
-            openReportInBrowser: true
+            automaticallyGenerateReport: false,
+            removeExistingJsonReportFile: false,
+            openReportInBrowser:false
         }
     }]
 };

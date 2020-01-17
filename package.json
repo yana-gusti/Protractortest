@@ -15,17 +15,18 @@
     "os-homedir": "1.0.2 ",
     "fs-plus": "3.0.2",
     "xlsx": "0.12.6",
-    "protractor": "5.3.0",
-    "protractor-jasmine2-screenshot-reporter": "0.5.0",
-    "chai": "4.1.2",
+    "protractor": "5.3.1",
+    "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "cucumber": "4.1.0",
-    "protractor-cucumber-framework": "4.2.0",
-    "protractor-multiple-cucumber-html-reporter-plugin": "1.6.1"
+    "protractor-cucumber-framework": "5.0.0",
+    "protractor-jasmine2-screenshot-reporter": "0.5.0",
+    "protractor-multiple-cucumber-html-reporter-plugin": "1.7.0",
+    "moment": "2.24.0"
   },
   "scripts": {
-    "webdriver-update": "webdriver-manager update",
-    "webdriver": "webdriver-manager start",
+    "prewebdriver": "webdriver-manager update --versions.chrome 2.44 --versions.standalone=3.9.1",
+    "webdriver": "webdriver-manager start --versions.chrome 2.44 --versions.standalone=3.9.1 --seleniumPort 5571",
     "test": "protractor conf.js"
   }
 }
