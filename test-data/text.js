@@ -17,8 +17,8 @@ module.exports={
             RU: "Википедия — свободная энциклопедия"
         },
         todayText: {
-            ENG: "single\\'s",
-            RU: "\\(англ.\\)русск.,"
+            ENG: "season\\'s",
+            // ENG: "season's",
         }
     }
 };

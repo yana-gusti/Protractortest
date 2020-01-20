@@ -1,7 +1,12 @@
 module.exports = thisModule= {
+
+
     isElementVisible: function (elem, ms = browser.params.timeout) {
-        return browser.wait(protractor.ExpectedConditions.visibilityOf(elem), ms).then(() => true, () => false);
+        return browser.wait(protractor.ExpectedConditions.visibilityOf(elem), ms)
+            .then(() => true, () => false);
     },
+
+
     getTableContentAsJSON: async (table, cellCss) => {
         const headers = [];
         const actual = [];

@@ -14,6 +14,10 @@ module.exports = {
                 RU:  "https://ru.wikipedia.org/",
                 ENG: "https://en.wikipedia.org/"
             },
+            PROD:{
+                RU:  "https://test.com",
+                ENG: "https://test.com"
+            },
         },
         API: {
             DEV:{

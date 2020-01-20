@@ -22,7 +22,6 @@ Then('{detail} {css} is displayed', function (_, cssLocator) {
 Then('{detail} {css} with text {text} is displayed', async (_, cssLocator, text)=> {
     console.log(text);
     const elem = element(by.cssContainingText(cssLocator, text));
-    // const elem = element(by.css(cssLocator));
     const elementText = await elem.getText();
     console.log(elementText);
     return expect(await helper.isElementVisible(elem)).to.equal(true);
