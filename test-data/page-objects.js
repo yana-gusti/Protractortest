@@ -21,7 +21,7 @@ module.exports = {
         },
         API: {
             DEV:{
-                ENG:  "http://juliemr.github.io/protractor-demo/",
+                ENG:  "http://samples.openweathermap.org/data/2.5",
             }
         },
     },

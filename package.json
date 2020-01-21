@@ -22,7 +22,8 @@
     "protractor-cucumber-framework": "5.0.0",
     "protractor-jasmine2-screenshot-reporter": "0.5.0",
     "protractor-multiple-cucumber-html-reporter-plugin": "1.7.0",
-    "moment": "2.24.0"
+    "moment": "2.24.0",
+    "request": "latest"
   },
   "scripts": {
     "prewebdriver": "webdriver-manager update --versions.chrome 2.44 --versions.standalone=3.9.1",

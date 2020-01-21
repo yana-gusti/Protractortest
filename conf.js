@@ -1,3 +1,4 @@
+const fs = require('fs');
 exports.config = {
     seleniumAddress: 'http://127.0.0.1:5571/wd/hub',
     getPageTimeout: 60000, //60 sec
@@ -30,7 +31,7 @@ exports.config = {
     },
     SELENIUM_PROMISE_MANAGER: false,
     restartBrowserBetweenTests: true,
-    specs: ['features/Wiki.feature'],
+    specs: ['features/API.feature'],
 
     cucumberOpts: {
         require: ['step_definitions/*.js', 'support/helper.js', 'support/cucumber-expressions.js'],
@@ -44,6 +45,22 @@ exports.config = {
         timeout: 15000, //15 sec
         env: process.env.TEST_ENV || 'DEV',
         lan: process.env.TEST_LAN || 'ENG'
+    },
+
+    onPrepare: function () {
+        try {
+            const data = fs.readFileSync('./storage.json');
+            global.uniqueMap = JSON.parse(data);
+        } catch (e) {
+            global.uniqueMap = {};
+        }
+    },
+
+    onComplete: function () {
+        fs.writeFile('storage.json', JSON.stringify(uniqueMap), 'utf8', (err) => {
+            if (err) throw err;
+            console.log('The storage.json file has been saved!');
+        });
     },
 
     plugins: [{
