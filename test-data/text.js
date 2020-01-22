@@ -20,5 +20,8 @@ module.exports={
             ENG: "season\\'s",
             // ENG: "season's",
         }
+    },
+    hashes: {
+        fileHash: 'e2c39165ebd60772062684d218259370c739b061',
     }
 };

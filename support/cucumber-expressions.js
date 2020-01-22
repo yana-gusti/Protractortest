@@ -68,3 +68,18 @@ defineParameterType({
         return s;
     }
 });
+
+defineParameterType({
+    regexp: STRING_REGEXP,
+    name: 'hash',
+    useForSnippets: true,
+    transformer: (s) => {
+        if (s.indexOf('HASH:') !== -1) {
+            s = s.split('HASH:')[1];
+            let dataArray = s.split(':');
+            let textToVerify = dataArray[0];
+            return text.hashes[textToVerify];
+        }
+        return s;
+    }
+});

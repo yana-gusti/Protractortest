@@ -31,7 +31,7 @@ exports.config = {
     },
     SELENIUM_PROMISE_MANAGER: false,
     restartBrowserBetweenTests: true,
-    specs: ['features/API.feature'],
+    specs: ['features/Files.feature'],
 
     cucumberOpts: {
         require: ['step_definitions/*.js', 'support/helper.js', 'support/cucumber-expressions.js'],

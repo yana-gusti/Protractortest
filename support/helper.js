@@ -1,3 +1,6 @@
+const xlsx = require('xlsx');
+const fs = require('fs');
+const crypto = require('crypto');
 module.exports = thisModule= {
 
 
@@ -35,4 +38,44 @@ module.exports = thisModule= {
             throw new Error('Table is not visible');
         }
     },
-}
+
+    getFileHash: function (filePath, hashType = 'sha1') {
+        let workbook;
+        let hash = crypto.createHash(hashType);
+        const timeout = 3000;
+        return browser.wait(function () {
+            return fs.existsSync(filePath);
+        }, timeout, filePath + ' is not found after ' + timeout + ' ms.').then(function () {
+            /**
+             * if statement here is used to generate a valid HASH for .xlsx files
+             */
+            if (filePath.endsWith('.xlsx')) {
+                workbook = xlsx.readFile(filePath);
+                workbook.Props.CreatedDate = ''; // we need it to generate hash code only from data inside the Excel file, without any information about date (otherwise it will caused new hashcode every time)
+                workbook.Props.ModifiedDate = ''; // we need it to generate hash code only from data inside the Excel file, without any information about date (otherwise it will caused new hashcode every time)
+
+                return new Promise((resolve, reject) => {
+                    try {
+                        hash.update(JSON.stringify(workbook));
+                        resolve(hash.digest('hex'));
+                    } catch (e) {
+                        reject(`Error in getting hash from ${filePath} file.\n${e}`);
+                    }
+                });
+            }
+            let readStream = fs.createReadStream(filePath);
+            return new Promise((resolve, reject) => {
+                readStream
+                    .on('data', function (chunk) {
+                        hash.update(chunk);
+                    })
+                    .on('end', function () {
+                        resolve(hash.digest('hex'));
+                    })
+                    .on('error', function (error) {
+                        reject(error);
+                    })
+            });
+        });
+    },
+};

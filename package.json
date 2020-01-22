@@ -11,23 +11,27 @@
   "license": "MIT",
   "repository": "https://github.com/yana-gusti/Protractortest",
   "devDependencies": {
-    "xmlhttprequest": "1.8.0",
-    "os-homedir": "1.0.2 ",
-    "fs-plus": "3.0.2",
-    "xlsx": "0.12.6",
-    "protractor": "5.3.1",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "cucumber": "4.1.0",
+    "fs-plus": "3.0.2",
+    "moment": "2.24.0",
+    "os-homedir": "1.0.2 ",
+    "protractor": "5.3.1",
     "protractor-cucumber-framework": "5.0.0",
     "protractor-jasmine2-screenshot-reporter": "0.5.0",
     "protractor-multiple-cucumber-html-reporter-plugin": "1.7.0",
-    "moment": "2.24.0",
-    "request": "latest"
+    "request": "latest",
+    "xlsx": "^0.12.6",
+    "xmlhttprequest": "1.8.0"
   },
   "scripts": {
     "prewebdriver": "webdriver-manager update --versions.chrome 2.44 --versions.standalone=3.9.1",
     "webdriver": "webdriver-manager start --versions.chrome 2.44 --versions.standalone=3.9.1 --seleniumPort 5571",
     "test": "protractor conf.js"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "fs": "0.0.1-security"
   }
 }

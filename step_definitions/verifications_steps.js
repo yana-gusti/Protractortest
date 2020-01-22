@@ -77,3 +77,7 @@ Then('Table {css} contains data:', async (locator, table) => {
     }
 });
 
+Then('User verify downloaded file {text} hash is equal to {hash}', function (fileName, hash) {
+    return expect(helper.getFileHash(fileName)).to.eventually.equal(hash);
+});
+
